@@ -53,7 +53,7 @@ class ProstagesController extends AbstractController
      */	 
 	 public function stages($id)
     {
-       return new Response('Cette page affichera le descriptif du stage ayant pour identifiant $id') ;
+       return new Response('Cette page affichera le descriptif du stage ayant pour identifiant ' .$id) ;
     }
 		
 	 
