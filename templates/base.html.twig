@@ -2,12 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Prostages{% endblock %}</title>
-        {% block stylesheets %}
-		
+        <title>{% block title %}Bienvenue sur Prostages{% endblock %}</title>
+        {% block stylesheets %} 	
 		{% endblock %}
     </head>
-	    <body>      
+	    <body>  
+{% block slider %}	
+{% endblock %}	
 		{% block menu %}		
 		<nav class="menu">
 	<ul>	
@@ -15,20 +16,19 @@
   <li><a href="#Entreprises">Entreprises</a></li>
   <li><a href="#Formations">Formations</a></li>
   <li><a href="#Stages">Stages</a></li>
-   <img src="{{asset('prostages.jpg')}}" alt="Saisissez la clef !" />
+   
  </ul>
  </nav>
 	{% endblock %}
 		
-		  {% block body %}
-		  
-		  	  
+		  {% block contenu %}
+		  	  	  
 		<img src="{{asset('prostages.jpg')}}" alt="Saisissez la clef !" />
 				{% endblock %}
 		
         {% block javascripts %}{% endblock %}
 		
-		{% block piedDePage %}
+		{% block footer %}
         <h2>Premier projet Symfony Jérôme Doyénard
         {% endblock %}
     </body>
