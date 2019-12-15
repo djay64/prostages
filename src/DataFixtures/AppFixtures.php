@@ -25,12 +25,12 @@ class AppFixtures extends Fixture
         $duTic -> setNomLong("Diplôme universitaire en Technologies de l'Information et de la Communication");
 		$duTic-> setNomCourt("DU TIC");
 		
-		$LicenceProMultimédia = new Formation();
-		 $LicenceProMultimédia -> setNomCourt("LP Multimédia");
-         $LicenceProMultimédia -> setNomLong("Licence professionelle multimédia");
+		$licenceProMultimédia = new Formation();
+		 $licenceProMultimédia -> setNomCourt("LP Multimédia");
+         $licenceProMultimédia -> setNomLong("Licence professionelle multimédia");
 		
 // mise en persistance des objets formations
-       $tableauFormations = array($dutInfo,$duTic,$licenceProMultimedia);
+       $tableauFormations = array($dutInfo,$duTic,$licenceProMultimédia);
         foreach ($tableauFormations as $uneFormation){
             $manager->persist($uneFormation);
 				}
