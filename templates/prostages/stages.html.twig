@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprises{% endblock %}
+{% block title %}
+{{stage.titre}}
+{% endblock %}
+
 
 {% block contenu %}
-<h1>Cette page affichera le descriptif du stage ayant pour identifiant {{ idStage }}</h1>
+<h1>Cette page affichera le descriptif du stage ayant pour identifiant {{ stage.id }}</h1>
+
+<ul class="list-group">
+
+<li class="list-group-item center"><strong>Intitulé du stage : </strong>{{stage.titre}}</li>
+<li class="list-group-item center"><strong>Date d'ajout : </strong> {{stage.dateAjout | date("d/m/Y")}}</li>
+<li class="list-group-item center"><strong>Entreprise : </strong> {{stage.entreprise.nom}}</li> 
+<li class="list-group-item center"><strong>Missions : </strong> {{stage.description}}</li> 
+<li class="list-group-item center"><strong>Date de début de stage : </strong>{{stage.dateDebut | date("d/m/Y")}}</li>
+<li class="list-group-item center"><strong>Date de fin de stage : </strong>{{stage.dateFin | date("d/m/Y")}}</li>
+<li class="list-group-item center"><strong>email de contact : </strong>{{stage.emailContact}}</li> 
+
+</ul>
 {% endblock %}

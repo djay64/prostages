@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;  // permet de pouvoir faire des 
 use Symfony\Component\HttpFoundation\Response; // pour pouvoir utiliser reponse
 
 use App\Entity\Stage ; 
+use App\Entity\Entreprise ;
 
 class ProstagesController extends AbstractController
 {/**
@@ -15,27 +16,34 @@ class ProstagesController extends AbstractController
      public function index()
     {
 		// recuperer le repository de l'entité stage		
-		 $repositoryStage = $this->getDoctrine()->getRepository(Stage::class) ;
-		
+		 $repositoryStage = $this->getDoctrine()->getRepository(Stage::class) ;		
 		// recuperer les stages enregistrés en bd
-		 $stages = $repositoryStage->findAll() ;
-		
-		
+		 $stages = $repositoryStage->findAll() ;		
 		//envoyer les stages recupérés à la vue chargée de les afficher
-		
-		
-        return $this->render('prostages/index.html.twig',['stages'=>$stages]);
+		   return $this->render('prostages/index.html.twig',['stages'=>$stages]);
                }
 			   
 			   
+	
 	 /**
      * @Route("/entreprises", name="prostages_entreprises")
      */	 
 	 
 	public function entreprises()
     {
-		return $this->render('prostages/entreprises.html.twig') ;
+		  // recuperer le repository de l'entité entreprise		
+		 $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class) ;
+		// recuperer les entreprises proposant un stage		
+$entreprises = $repositoryEntreprise->findAll () ;
+//envoyer les stages recupérés à la vue chargée de les afficher
+		   		return $this->render('prostages/entreprises.html.twig',['entreprises'=>$entreprises] ) ;
+		
+		
+		
+		
     }
+	
+	
 	
 	  /**
      * @Route("/formations", name="prostages_formations")
@@ -49,7 +57,12 @@ class ProstagesController extends AbstractController
      */	
 	public function stages($id)
     {
-		return $this->render("prostages/stages.html.twig", ['idStage'=>$id]);
+			  // recuperer le repository de l'entité stage		
+		 $repositoryStage = $this->getDoctrine()->getRepository(Stage::class) ;
+				// recuperer le stages correspondant à l'id enregistrés en bd
+		 $stage = $repositoryStage->find($id) ;
+		 		 //envoyer le stage recupéré à la vue chargée de les afficher
+		   	return $this->render("prostages/stages.html.twig", ['stage'=>$stage]);
     }
 			 }
 

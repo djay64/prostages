@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+<h1> {{ listeStage[0].entreprise.nom}} </h1>
+<ul>
+{% for stage in listeStages %}
+<li> {{stage.titre}}</li>
+{% end for %}
+</ul>

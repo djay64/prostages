@@ -16,7 +16,7 @@ Derniers stages ajoutés
 		
 		{% for stageCourant in stages %}
 		
-		{#si on est en début de ligne, créer un compsoant card-deck #}
+		{#si on est en début de ligne, créer un composant card-deck #}
 		{% if debutNouvelleLigne == true %}
 		<div class=card-deck">
 		{% set debutNouvelleLigne = false %}
@@ -24,7 +24,9 @@ Derniers stages ajoutés
 		
 		{# afficher une carte pour le stage courant#}
 			<div class="card">
+			<a href ="{{path('prostages_stagesId', {id:stageCourant.id})}}">
 				<h5 class="card-header">  	{{stageCourant.titre}} 	</h5>
+				</a>
 				
 				<div class="card-body">
 					<p class="card-text"> 
@@ -33,11 +35,8 @@ Derniers stages ajoutés
 					<p class="card-text"> <b>Missions : </b>{{stageCourant.description}}  </p>
 					<p class="card-text"> <b>Date de début de stage : </b>{{stageCourant.dateDebut | date("d/m/Y")}}</p>
 					<p class="card-text"> <b>Date de fin de stage : </b>{{stageCourant.dateFin | date("d/m/Y")}}  </p>
-					
-					
 					<p class="card-text"> <b> Email de contact : </b> {{stageCourant.emailContact}} </p>
-					
-					
+								
 					
 				</div>
 				
