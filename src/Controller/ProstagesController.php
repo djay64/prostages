@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response; // pour pouvoir utiliser reponse
 
 use App\Entity\Stage ; 
 use App\Entity\Entreprise ;
+use App\Entity\Formation ;
 
 class ProstagesController extends AbstractController
 {/**
@@ -37,11 +38,50 @@ class ProstagesController extends AbstractController
 $entreprises = $repositoryEntreprise->findAll () ;
 //envoyer les stages recupérés à la vue chargée de les afficher
 		   		return $this->render('prostages/entreprises.html.twig',['entreprises'=>$entreprises] ) ;
-		
-		
-		
-		
+			
+			
     }
+	
+	
+	
+	
+	
+	/**
+     * @Route("/entreprises/{id}", name="listeStagesParEntreprise")
+     */	 
+	 
+	 public function listeStagesParEntreprise($id)
+	 {
+		 // recuperer le repository de l'entité stage		
+		 $repositoryStage = $this->getDoctrine()->getRepository(Stage::class) ;
+		 
+		 // recuperer les stages proposés par l'entreprise de valeur id
+$stagesEnt = $repositoryStage->findByEntreprise($id) ;
+//envoyer les stages recupérés à la vue chargée de les afficher
+
+	 return $this->render('prostages/listeStages.html.twig',['listeStages'=>$stagesEnt] ) ;
+	 	 
+	 }
+	 
+	 
+	 /**
+     * @Route("/formations/{id}", name="listeStagesParFormation")
+     */	 
+	 
+	 public function listeStagesParFormation($id)
+	 {
+		 // recuperer le repository de l'entité stage		
+		 $repositoryStage = $this->getDoctrine()->getRepository(Stage::class) ;
+		 
+		 // recuperer les stages pour une formation de valeur id
+$stagesFormation = $repositoryStage->findByFormations($id) ;
+//envoyer les stages recupérés à la vue chargée de les afficher
+
+	 return $this->render('prostages/listeStagesFormation.html.twig',['listeStages'=>$stagesFormation] ) ;
+	  
+	 
+	 }
+	 
 	
 	
 	

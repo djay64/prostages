@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+
+<h1> Stages proposés pour la formation {{ listeStagesFormation[0].formations.nomCourt}} </h1>
+<ul>
+{% for stage in listeStagesFormation %}
+<li> {{stage.titre}} </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

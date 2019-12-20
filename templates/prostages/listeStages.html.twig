@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
-<h1> {{ listeStage[0].entreprise.nom}} </h1>
+{% block contenu %}
+
+<h1> Stages proposés par {{ listeStages[0].entreprise.nom}} </h1>
 <ul>
 {% for stage in listeStages %}
-<li> {{stage.titre}}</li>
-{% end for %}
+<li> {{stage.titre}} </li>
+{% endfor %}
 </ul>
+
+{% endblock %}

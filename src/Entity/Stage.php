@@ -56,7 +56,7 @@ class Stage
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="stages")
-     */
+	 */
     private $formations;
 
     
